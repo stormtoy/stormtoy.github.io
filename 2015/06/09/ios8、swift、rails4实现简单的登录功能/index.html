@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ios8、swift、rails4实现简单的登录功能 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="首先，使用xcode6.3先建立一个ios project，使用storyboard画出界面原型。实现的界面很简单：
+
+如上图所示，运行app一进来进入功能菜单controller，在功能菜单中检查用户是否登陆，如未登陆，显示模式窗口 loginviewcontroller。
+
+# HomeViewController
+override func viewDidAppear(animated: B">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ios8、swift、rails4实现简单的登录功能">
+<meta property="og:url" content="http://yoursite.com/2015/06/09/ios8、swift、rails4实现简单的登录功能/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="首先，使用xcode6.3先建立一个ios project，使用storyboard画出界面原型。实现的界面很简单：
+
+如上图所示，运行app一进来进入功能菜单controller，在功能菜单中检查用户是否登陆，如未登陆，显示模式窗口 loginviewcontroller。
+
+# HomeViewController
+override func viewDidAppear(animated: B">
+<meta property="og:image" content="http://yoursite.com/assets/Snip20150609_1-207x300.png">
+<meta property="og:updated_time" content="2016-03-27T08:56:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ios8、swift、rails4实现简单的登录功能">
+<meta name="twitter:description" content="首先，使用xcode6.3先建立一个ios project，使用storyboard画出界面原型。实现的界面很简单：
+
+如上图所示，运行app一进来进入功能菜单controller，在功能菜单中检查用户是否登陆，如未登陆，显示模式窗口 loginviewcontroller。
+
+# HomeViewController
+override func viewDidAppear(animated: B">
+<meta name="twitter:image" content="http://yoursite.com/assets/Snip20150609_1-207x300.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ios8、swift、rails4实现简单的登录功能" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/09/ios8、swift、rails4实现简单的登录功能/" class="article-date">
+  <time datetime="2015-06-09T04:06:35.000Z" itemprop="datePublished">2015-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ios8、swift、rails4实现简单的登录功能
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先，使用xcode6.3先建立一个ios project，使用storyboard画出界面原型。实现的界面很简单：</p>
+<p><a href="http://stormtoy.cn/wp-content/uploads/2015/06/Snip20150609_1.png" target="_blank" rel="external"><img src="/assets/Snip20150609_1-207x300.png" alt="Snip20150609_1"></a></p>
+<p>如上图所示，运行app一进来进入功能菜单controller，在功能菜单中检查用户是否登陆，如未登陆，显示模式窗口 loginviewcontroller。</p>
+<pre>
+# HomeViewController
+override func viewDidAppear(animated: Bool) {
+super.viewDidAppear(true)
+
+let defaults = NSUserDefaults.standardUserDefaults()
+
+if defaults.objectForKey("userLoggedIn") == nil {
+if let loginController =     self.storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as? LoginViewController {
+self.navigationController?.presentViewController(loginController, animated: true, completion: nil)
+}
+}
+}
+</pre>
+
+<p>验证未登陆的功能实现完了，那么登陆功能呢？别急，我们先实现rails服务端程序，然后再做登陆功能。</p>
+<p>先在rails gemfile中加入</p>
+<pre># 开发移动设备API接口
+gem 'rocket_pants', '~&gt; 1.9.2'
+</pre>
+
+<p>然后bundle install 安装gem,如果网络错误，可以设置使用国内镜像进行安装，只需要把下面这句代码加入到gemfile顶部，然后运行bundle install即可</p>
+<pre>source 'http://ruby.taobao.org/'
+</pre>
+
+<p>然后我们来基于rocket_pants 来构建api 供移动客户端调用</p>
+<p>建立好你的rails项目，我这里使用的是rails4,在如下目录建立base_controller.rb，这个Controler类似ApplicationController，我们以后开发的API Controller都要继承它，主意目录，这样做是为了更好的将版本区分开来</p>
+<pre># app/controllers/api/v1/base_controller.rb
+
+class Api::V1::BaseController &lt; RocketPants::Base
+  version 1
+end
+</pre>
+
+<p>接下来创建sessioncontroller，来实现登陆功能：</p>
+<p>[rails]</p>
+<p>class Api::V1::SessionsController &amp;lt; Api::V1::BaseController</p>
+<p>  skip_before_filter :require_authentication!</p>
+<p>  def create</p>
+<pre><code>admin = Admin.find_for_authentication(username: admin_params[:username])
+
+if admin &amp;amp;amp;&amp;amp;amp; admin.valid_password?(admin_params[:password])
+
+  admin.generate_authentication_token
+
+  expose({
+
+             admin_id: admin.id,
+
+             token: admin.authentication_token
+
+         })
+
+else
+
+  error! :unauthenticated
+
+end
+</code></pre><p>  end</p>
+<p>  private</p>
+<p>  def admin_params</p>
+<pre><code>params.require(:admin).permit(:username, :password)
+</code></pre><p>  end</p>
+<p>end</p>
+<p>[/rails]</p>
+<p>代码很好理解，获取到用户名，密码，然后进行验证，验证成功后 生成一个token，最后使用expose方法将admin_id与token返回给客户端调用方，我们的IOS客户端在将token与admin_id存入加密的keychain中，以便以后执行请求时使用。</p>
+<p>注意token和admin_id不要存在NSUserDefaults中。</p>
+<p>admin.generate_authentication_token是给用户生成token</p>
+<pre>  #app/models/admin.rb 你的也许叫user.rb，记得自己写migration，增加authentication_token这一列
+
+  def generate_authentication_token
+    loop do
+      self.authentication_token = SecureRandom.hex
+      break unless self.class.exists?(authentication_token: authentication_token)
+    end
+
+    save!
+
+    authentication_token
+  end
+</pre>
+
+<p>上面这个SessionsController中，还有一个地方要解释，skip_before_filter :require_authentication!这一句的意思是执行SessionsController create方法时，不需要先进行认证。这个require_authentication!方法，是继承自</p>
+<p>BaseController,下面我们添加基本的认证功能给BaseController。</p>
+<pre>class Api::V1::BaseController &lt; RocketPants::Base
+  version 1
+
+  before_filter :authenticate_admin_from_token
+  before_filter :require_authentication!
+
+  def current_admin
+    @current_admin
+  end
+
+  def current_ability
+    @current_ability ||= AdminAbility.new(current_admin)
+  end
+
+  def require_authentication!
+    error! :unauthenticated if current_admin.nil?
+  end
+
+  def authenticate_admin_from_token
+    admin = authenticate_with_http_token do |token, options|
+      admin_id = options[:admin_id]
+      admin = admin_id &amp;&amp; Admin.find_by_id(admin_id)
+
+      if admin &amp;&amp; Devise.secure_compare(admin.authentication_token, token)
+        admin
+      else
+        nil
+      end
+    end
+    @current_admin = admin
+  end
+end
+</pre>
+
+<p>这是完善后的BaseController，先根据token和admin_id进行认证，如果认证成功，将admin赋值给@current_admin，</p>
+<p>这里的 current_ability方法是为了今后查询进行权限控制而建立的，使用cancancan这个gem的同学应该对这个比较熟悉。在我的rails项目中，用户的mode是Admin，你的也许是User.</p>
+<p>好了，rails api 登陆功能实现完成，我们可以测试一下:</p>
+<p>测试之前，先配置一下route</p>
+<p>打开routes.rb，添加如下路由配置</p>
+<pre>  namespace :api do
+    api version: 1, module: 'v1' do
+      resources :sessions, only: [:create]
+    end
+  end
+</pre>
+
+<p>添加完之后，我们输入 rake routes 查看路由，可以看到有这么一条</p>
+<pre> api_sessions POST   /api/:version/sessions(.:format)                         api/v1/sessions#create {:version=&gt;/(1)/, :format=&gt;"json"}
+</pre>
+
+<p>好了，启动rails应用，我们打开命令行，使用curl工具测试登陆:</p>
+<pre>lt-pc:~ liutao$ curl -i -X POST -d "admin[username]=xxx&amp;admin[password]=xxxxxxx" 'http://0.0.0.0:3000/api/1/sessions'
+
+HTTP/1.1 200 OK
+X-Frame-Options: SAMEORIGIN
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Content-Length: 71
+Content-Type: application/json; charset=utf-8
+ETag: "4afb5a4ff3fcd5901f889b429055b5d1"
+Cache-Control: max-age=0, private, must-revalidate
+X-Request-Id: e0bb263a-ddf6-4751-8fb2-c3485988cd5c
+X-Runtime: 0.161095
+Connection: keep-alive
+Server: thin 1.6.2 codename Doc Brown
+
+{"response":{"admin_id":26,"token":"c699f679e4690b3718594064e2ce0c85"}}lt-pc:~ liutao$
+</pre>
+
+<p>成功了，使用curl登陆成功，并返回了admin_id与token</p>
+<p>接下来，我们回到Xcode，来实现客户端登陆功能</p>
+<p>先添加好相应的outlet，以便可以获取界面用户名和密码</p>
+<p>然后建立相应的siginTapped action，以便能捕获到登陆事件：</p>
+<pre>    //登录
+    @IBAction func signinTapped(sender: UIButton) {
+        var username:NSString = textFieldUserName.text
+        var password:NSString = textFieldPassword.text
+        if (username.isEqualToString("") || password.isEqualToString("")){
+            var alertView:UIAlertView = UIAlertView()
+            alertView.title = "Sign in Failed!"
+            alertView.message = "Please enter Username and Password"
+            alertView.delegate = self
+            alertView.addButtonWithTitle("OK")
+            alertView.show()
+        }else{
+            let parameters = [
+                "admin[username]": username,
+                "admin[password]": password
+            ]
+
+            // start activity indicator
+            self.activityIndicatorView.hidden = false     
+
+            Alamofire.request(.POST, "http://0.0.0.0:3000/api/1/sessions",parameters: parameters)
+                .responseJSON { (_, _, JSON, error) in
+                    let jsonData:NSDictionary = JSON as! NSDictionary
+                    if jsonData.objectForKey("error") != nil {
+                        let error_description:String = jsonData.objectForKey("error_description") as! String
+                        self.displayAlertMessage("Error", alertDescription:error_description )
+                        return
+                    }
+                    self.activityIndicatorView.hidden = true
+                    self.updateUserLoggedInFlag()
+
+                    // save API AuthToken and ExpiryDate in Keychain
+                    self.saveApiTokenInKeychain(jsonData.objectForKey("response") as! NSDictionary)
+            }
+        }
+
+    }
+</pre>
+
+<p>这里你需要使用cocopods管理你的项目依赖，并使用了第三方的网络库 Alamofire</p>
+<p>我的Podfile文件如下:</p>
+<pre>source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+pod 'Alamofire', '~&gt; 1.2'
+pod 'ObjectMapper', '~&gt; 0.12'
+pod 'XLForm', :git =&gt; 'https://github.com/xmartlabs/XLForm.git'
+pod 'Timepiece'
+</pre>
+
+<p>ObjectMapper是将json转换成swift里的model</p>
+<p>XLForm是可以简便的构造表单</p>
+<p>上面的代码跟刚才CRUL测试做的事情一样，都是发送了一个post请求来进行登陆。只不过这次是使用Alamofire来进行请求。</p>
+<p>请求成功后，updateUserLoggedInFlag、saveApiTokenInKeychain</p>
+<p>这两个方法如下:</p>
+<pre>    func updateUserLoggedInFlag() {
+        // Update the NSUserDefaults flag
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject("loggedIn", forKey: "userLoggedIn")
+        defaults.synchronize()
+    }
+
+    func saveApiTokenInKeychain(tokenDict:NSDictionary) {
+        let admin_id = (tokenDict.objectForKey("admin_id") as! NSNumber).stringValue
+        let token = tokenDict.objectForKey("token") as! String
+
+        println("admin_id=\(admin_id) token=\(token)")
+
+        KeychainAccess.setPassword(token, account: "Auth_Token", service: "KeyChainService")
+        KeychainAccess.setPassword(admin_id, account: "Auth_Admin_Id", service: "KeyChainService")
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    func displayAlertMessage(alertTitle:String, alertDescription:String) -&gt; Void {
+        // hide activityIndicator view and display alert message
+        self.activityIndicatorView.hidden = true
+        let errorAlert = UIAlertView(title:alertTitle, message:alertDescription, delegate:nil, cancelButtonTitle:"OK")
+        errorAlert.show()
+    }
+</pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/06/09/ios8、swift、rails4实现简单的登录功能/" data-id="cimac09mz0008h0v112xhffww" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rails/">rails</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术文章/">技术文章</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/06/24/Postgres-on-OSX-with-homebrew-not-running-after-OSX-crash/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Postgres on OSX with homebrew not running after OSX crash
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/04/02/rails4-extjs4生产环境js的压缩/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">rails4+extjs4生产环境js的压缩</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/brew/">brew</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extjs/">extjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/osx/">osx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postgresql/">postgresql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rails/">rails</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sencha/">sencha</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术文章/">技术文章</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/brew/" style="font-size: 10px;">brew</a> <a href="/tags/c/" style="font-size: 10px;">c#</a> <a href="/tags/extjs/" style="font-size: 10px;">extjs</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/ios/" style="font-size: 15px;">ios</a> <a href="/tags/mac/" style="font-size: 15px;">mac</a> <a href="/tags/osx/" style="font-size: 10px;">osx</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/rails/" style="font-size: 15px;">rails</a> <a href="/tags/sencha/" style="font-size: 10px;">sencha</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/技术文章/" style="font-size: 20px;">技术文章</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/03/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/05/C-学习笔记/">C#学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/01/从现在开始，做个自由的人/">从现在开始，做个自由的人</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/12/png-support-for-php-on-os-x-yosemite/">png support for php on os x yosemite</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/26/ios8、cancan、显示隐藏静态uitableviewcell/">ios8、cancan、显示隐藏静态uitableviewcell</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>C#学习笔记 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近开始学习unity进行游戏开发了，unity引擎支持C#与javascript两种编程语言。之前搞过Web开发，对Java和Ruby比较熟悉，这次游戏开发的编程语言我选择C#，所以有必要对C#的语言知识点进行梳理、复习和总结，为开发游戏做好基础准备。我自己参考了一本复习资料 «Learning hard C#学习笔记»，我自己读了几章，感觉写的相当不错。我将列出主要的知识点进行梳理，并在日后补">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#学习笔记">
+<meta property="og:url" content="http://yoursite.com/2016/01/05/C-学习笔记/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="最近开始学习unity进行游戏开发了，unity引擎支持C#与javascript两种编程语言。之前搞过Web开发，对Java和Ruby比较熟悉，这次游戏开发的编程语言我选择C#，所以有必要对C#的语言知识点进行梳理、复习和总结，为开发游戏做好基础准备。我自己参考了一本复习资料 «Learning hard C#学习笔记»，我自己读了几章，感觉写的相当不错。我将列出主要的知识点进行梳理，并在日后补">
+<meta property="og:updated_time" content="2016-03-27T08:56:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C#学习笔记">
+<meta name="twitter:description" content="最近开始学习unity进行游戏开发了，unity引擎支持C#与javascript两种编程语言。之前搞过Web开发，对Java和Ruby比较熟悉，这次游戏开发的编程语言我选择C#，所以有必要对C#的语言知识点进行梳理、复习和总结，为开发游戏做好基础准备。我自己参考了一本复习资料 «Learning hard C#学习笔记»，我自己读了几章，感觉写的相当不错。我将列出主要的知识点进行梳理，并在日后补">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-C-学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/05/C-学习笔记/" class="article-date">
+  <time datetime="2016-01-05T02:07:15.000Z" itemprop="datePublished">2016-01-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C#学习笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近开始学习unity进行游戏开发了，unity引擎支持C#与javascript两种编程语言。之前搞过Web开发，对Java和Ruby比较熟悉，这次游戏开发的编程语言我选择C#，所以有必要对C#的语言知识点进行梳理、复习和总结，为开发游戏做好基础准备。我自己参考了一本复习资料 «Learning hard C#学习笔记»，我自己读了几章，感觉写的相当不错。我将列出主要的知识点进行梳理，并在日后补上代码进行完善。</p>
+<h2 id="什么是C"><a href="#什么是C" class="headerlink" title="什么是C"></a>什么是C</h2><p>C#是由微软公司开发的一种面向对象且运行与.NET Framework之上的高级程序设计语言。</p>
+<h2 id="C-能编写哪些应用程序"><a href="#C-能编写哪些应用程序" class="headerlink" title="C#能编写哪些应用程序"></a>C#能编写哪些应用程序</h2><ul>
+<li>Windows桌面应用程序</li>
+<li>Web应用程序</li>
+<li>Web服务</li>
+</ul>
+<h2 id="什么是-NET-Framework"><a href="#什么是-NET-Framework" class="headerlink" title="什么是.NET Framework"></a>什么是.NET Framework</h2><p>C#是一门编程语言，它用于实现与计算机的对话，但C#编写的程序是需要编译和运行的，.NET Framework就是应用程序运行时执行环境，为应用程序的执行提供以下几种服务。</p>
+<ul>
+<li>全面的类库</li>
+<li>内存管理</li>
+<li>通用类型系统</li>
+<li>开发结构和技术</li>
+<li>语言互操作性</li>
+</ul>
+<h2 id="NET-Framework的组成"><a href="#NET-Framework的组成" class="headerlink" title=".NET Framework的组成"></a>.NET Framework的组成</h2><p>.NET Framework包括公共语言运行时（Common Language Runtime ,CLR）和.NET Framework 类库(Framework Class Library ,FCL)</p>
+<h2 id="C-与-NET-Framework的关系"><a href="#C-与-NET-Framework的关系" class="headerlink" title="C#与.NET Framework的关系"></a>C#与.NET Framework的关系</h2><p>C#是面向.NET Framework的语言，除了C#之外，VB.NET 和 F#也都是面向.NET Framework的语言。.NET Framework为这些语言提供了执行环境，这些语言则可以调用.NET Framework所提供的类库来开发各种应用程序。</p>
+<h2 id="C-代码的执行过程"><a href="#C-代码的执行过程" class="headerlink" title="C#代码的执行过程"></a>C#代码的执行过程</h2><ul>
+<li>C#代码编译为中间语言代码的阶段CIL</li>
+<li>中间语言代码编译为本机代码的阶段</li>
+<li>执行本机代码</li>
+</ul>
+<h2 id="基础数据类型"><a href="#基础数据类型" class="headerlink" title="基础数据类型"></a>基础数据类型</h2><h3 id="数值类型"><a href="#数值类型" class="headerlink" title="数值类型"></a>数值类型</h3><ul>
+<li>整形</li>
+<li>浮点型</li>
+<li>十进制型</li>
+<li>布尔类型</li>
+</ul>
+<h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><h3 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h3><!--lang:c#-->
+<p>enum Gender<br>{<br>    Female,<br>    Male<br>}</p>
+<h3 id="结构体类型"><a href="#结构体类型" class="headerlink" title="结构体类型"></a>结构体类型</h3><p>C#中的结构体是一种值类型，通常适用于表示诸如Point、Rectangle和Color等的轻量级对象。</p>
+<h3 id="数组类型"><a href="#数组类型" class="headerlink" title="数组类型"></a>数组类型</h3><p>数组是一种引用类型，它代表了相同类型元素的集合。</p>
+<h2 id="变量和常量"><a href="#变量和常量" class="headerlink" title="变量和常量"></a>变量和常量</h2><h3 id="变量的使用"><a href="#变量的使用" class="headerlink" title="变量的使用"></a>变量的使用</h3><h3 id="变量的作用域"><a href="#变量的作用域" class="headerlink" title="变量的作用域"></a>变量的作用域</h3><h3 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h3><p>const 数据类型 常量名 = 与数据类型相对应的值;</p>
+<ul>
+<li>因为后续无法更改，常量必须在声明时就进行初始化</li>
+<li>常量无法接受变量的赋值</li>
+<li>常量默认是静态的，不允许显示使用static关键字声明</li>
+</ul>
+<h2 id="C-中的语句"><a href="#C-中的语句" class="headerlink" title="C#中的语句"></a>C#中的语句</h2><h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><ul>
+<li>if语句</li>
+<li>switch语句</li>
+<li>循环语句</li>
+<li>跳转语句</li>
+</ul>
+<h2 id="C-中的类"><a href="#C-中的类" class="headerlink" title="C#中的类"></a>C#中的类</h2><h3 id="什么是类"><a href="#什么是类" class="headerlink" title="什么是类"></a>什么是类</h3><p>类代表一组具有公共属性和行为的对象。</p>
+<h3 id="类的成员"><a href="#类的成员" class="headerlink" title="类的成员"></a>类的成员</h3><ul>
+<li>字段</li>
+<li>属性</li>
+<li>方法</li>
+</ul>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><ul>
+<li>实例构造函数</li>
+<li>静态构造函数</li>
+</ul>
+<h3 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h3><h3 id="索引器"><a href="#索引器" class="headerlink" title="索引器"></a>索引器</h3><h3 id="类实例化"><a href="#类实例化" class="headerlink" title="类实例化"></a>类实例化</h3><h3 id="类与结构体的区别"><a href="#类与结构体的区别" class="headerlink" title="类与结构体的区别"></a>类与结构体的区别</h3><h2 id="C-中面向对象编程"><a href="#C-中面向对象编程" class="headerlink" title="C#中面向对象编程"></a>C#中面向对象编程</h2><h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>封装指的是把类内部的数据隐藏起来，不让对象实例直接对其操作。</p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>在C#中，一个类可以继承另一个已有的类(密封类除外)，被继承的类称为基类（或父类），继承的类称为派生类（或子类），子类将获得基类除构造函数和西沟函数以外的所有成员。C#可以继承一个基类，并实现多个接口。</p>
+<h3 id="密封类"><a href="#密封类" class="headerlink" title="密封类"></a>密封类</h3><h3 id="子类的初始化顺序"><a href="#子类的初始化顺序" class="headerlink" title="子类的初始化顺序"></a>子类的初始化顺序</h3><p>使用了继承之后，档我们初始化一个子类时，除了会调用子类的构造函数外，同时也会调用基类的构造函数。</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态既相同类型的对象调用相同的方法却表现出不同行为的现象。</p>
+<h3 id="使用virtual和override关键字实现方法重写"><a href="#使用virtual和override关键字实现方法重写" class="headerlink" title="使用virtual和override关键字实现方法重写"></a>使用virtual和override关键字实现方法重写</h3><h3 id="所有类的父类：System-object"><a href="#所有类的父类：System-object" class="headerlink" title="所有类的父类：System.object"></a>所有类的父类：System.object</h3><h2 id="C-接口"><a href="#C-接口" class="headerlink" title="C#接口"></a>C#接口</h2><p>接口可以理解为对一组方法声明进行的统一命名，但这些方法没有提供任何实现。把一组方法声明在一个接口中，然后继承于该接口的类都需要实现这些方法。</p>
+<h3 id="继承接口（实现接口）"><a href="#继承接口（实现接口）" class="headerlink" title="继承接口（实现接口）"></a>继承接口（实现接口）</h3><h3 id="调用接口中的方法"><a href="#调用接口中的方法" class="headerlink" title="调用接口中的方法"></a>调用接口中的方法</h3><h3 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h3><h2 id="C-委托"><a href="#C-委托" class="headerlink" title="C#委托"></a>C#委托</h2><p>C#中的委托可以理解为函数的一个包装，他使得C#中的函数可以作为参数来被传递。</p>
+<h3 id="委托的使用"><a href="#委托的使用" class="headerlink" title="委托的使用"></a>委托的使用</h3><h3 id="委托链"><a href="#委托链" class="headerlink" title="委托链"></a>委托链</h3><h2 id="C-事件"><a href="#C-事件" class="headerlink" title="C#事件"></a>C#事件</h2><h2 id="C-中的类型—值类型和引用类型"><a href="#C-中的类型—值类型和引用类型" class="headerlink" title="C#中的类型—值类型和引用类型"></a>C#中的类型—值类型和引用类型</h2><h2 id="C-泛型"><a href="#C-泛型" class="headerlink" title="C#泛型"></a>C#泛型</h2><h3 id="泛型是什么"><a href="#泛型是什么" class="headerlink" title="泛型是什么"></a>泛型是什么</h3><p>泛型代表的就是“通用类型”，它可以代替任意的数据类型，使类型参数化，从而达到只实现一个方法就可以操作多种数据类型的目的。泛型将方法实现行为与方法操作的数据类型分离，实现了代码重用。</p>
+<h2 id="可空类型、匿名方法和迭代器"><a href="#可空类型、匿名方法和迭代器" class="headerlink" title="可空类型、匿名方法和迭代器"></a>可空类型、匿名方法和迭代器</h2><p>先列出这么多知识点，以后完善。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/01/05/C-学习笔记/" data-id="cimac09mi0000h0v17mj79a4t" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/27/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/01/01/从现在开始，做个自由的人/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">从现在开始，做个自由的人</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/brew/">brew</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/c/">c#</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/extjs/">extjs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ios/">ios</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mac/">mac</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/osx/">osx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postgresql/">postgresql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rails/">rails</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sencha/">sencha</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swift/">swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/感悟/">感悟</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术文章/">技术文章</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/brew/" style="font-size: 10px;">brew</a> <a href="/tags/c/" style="font-size: 10px;">c#</a> <a href="/tags/extjs/" style="font-size: 10px;">extjs</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/ios/" style="font-size: 15px;">ios</a> <a href="/tags/mac/" style="font-size: 15px;">mac</a> <a href="/tags/osx/" style="font-size: 10px;">osx</a> <a href="/tags/php/" style="font-size: 10px;">php</a> <a href="/tags/postgresql/" style="font-size: 10px;">postgresql</a> <a href="/tags/rails/" style="font-size: 15px;">rails</a> <a href="/tags/sencha/" style="font-size: 10px;">sencha</a> <a href="/tags/swift/" style="font-size: 10px;">swift</a> <a href="/tags/感悟/" style="font-size: 10px;">感悟</a> <a href="/tags/技术文章/" style="font-size: 20px;">技术文章</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/03/27/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/05/C-学习笔记/">C#学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/01/从现在开始，做个自由的人/">从现在开始，做个自由的人</a>
+          </li>
+        
+          <li>
+            <a href="/2015/12/12/png-support-for-php-on-os-x-yosemite/">png support for php on os x yosemite</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/26/ios8、cancan、显示隐藏静态uitableviewcell/">ios8、cancan、显示隐藏静态uitableviewcell</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
